@@ -1,7 +1,63 @@
 #include<iostream>
+#include<math.h>
+
 using namespace std;
 
 
+int CheckPrimeNumber(int x) {
+	if(x < 2) {
+		return false;
+	}
+	
+	for(int i = 2 ; i<= sqrt(x); i++) {
+		if(x%i == 0) {
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+int Bai3() {
+	int x, k, a[1000], n;
+	// nhap mot day so va loc ra cac so nguyen to
+	cout<< "nhap so luong";
+	cin >> n;
+	
+	for(int i = 0 ; i< n ; i++) {
+		cin >> a[i];
+	}
+	
+    
+	for(int i = 0 ; i < n ; i++) {
+		if(CheckPrimeNumber(a[i])) {
+			cout << a[i] << " ";
+		}
+	}
+	return 0;
+}
+
+
+int Bai2() {
+	int x, k, a[1000], n;
+	cout<< "nhap so luong";
+	cin >> n;
+	
+	for(int i = 0 ; i< n ; i++) {
+		cin >> a[i];
+	}
+	cout<< "nhap k";
+	cin >> k ;
+	
+	for(int i = k; i < n - 1; i++) {
+        a[i] = a[i + 1];
+    }
+    
+	for(int i = 0 ; i < n ; i++) {
+		cout << a[i] << " ";
+	}
+	return 0;
+}
 
 int Bai1() {
 	
@@ -32,6 +88,5 @@ int Bai1() {
 
 int main( )
 {
-	cout << Bai1() ;
-    return 0; 
+	cout << Bai3() ;
 }
