@@ -18,6 +18,24 @@ int CheckPrimeNumber(int x) {
 	return true;
 }
 
+int bai4() {
+ // dem cac so lan lap trong mot mang roi in ra key value
+	int n;
+    if (!(cin >> n)) return 0;
+
+    map<int, int> countMap;
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        countMap[x]++; 
+    }
+
+    for (auto const& [val, count] : countMap) {
+        cout << val << " - " << count << "; ";
+    }
+
+}
+
 int Bai3() {
 	int x, k, a[1000], n;
 	// nhap mot day so va loc ra cac so nguyen to
