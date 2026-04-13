@@ -18,6 +18,43 @@ int CheckPrimeNumber(int x) {
 	return true;
 }
 
+int bai7() {
+	int n , a[1000] ;
+    cin >> n;
+    
+    //Nhap va mot so nguyen duong n, tiep theo la n so nguyen duong lan luot la 
+	//cac phan tu cua mot day so, hay dem tan so (so lan xuat hien) cua cac so trong day va 
+	//in no ra man hinh duoi dang sau: "a1 - t1; a2 - t2; ... an - tn; ", 
+	//trong do t1 la so lan xuat hien cua so a1, t2 la so lan xuat hien cua a2, ... a1, a2, .. an 
+	//khong trung nhau va duoc sap xep tang dan (xem vi du de ro hon)
+	// Input: 4 2 2 5 6 5  --- Output : 2 - 2; 4 - 1; 5 - 2; 6 - 1;
+	for(int i = 0 ; i< n ; i++) {
+		cin >> a[i];
+	}
+
+    for(int i = 0 ; i<n ; i++) {
+        for(int j = i+1 ; j < n ; j++) {
+            if(a[i] > a[j]) {
+                int temp = a[j] ;
+                a[j] = a[i] ;
+                a[i] = temp;
+            }
+        }
+    }
+
+    for(int i = 0 ; i<n ; i++) {
+
+        int count = 1 ;
+        while((i+1) < n && a[i]==a[i+1]) {
+            count++;
+            i++;
+        }
+
+        cout << a[i] << " - " << count << "; ";
+    }
+
+}
+
 int bai4() {
  // dem cac so lan lap trong mot mang roi in ra key value
 	int n;
@@ -106,5 +143,5 @@ int Bai1() {
 
 int main( )
 {
-	cout << Bai3() ;
+	cout << bai7() ;
 }
