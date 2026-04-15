@@ -18,6 +18,42 @@ int CheckPrimeNumber(int x) {
 	return true;
 }
 
+int bai8(){
+	
+	// kiem tra co phai la day don dieu hay khong ?
+	int n , a[1000] ;
+    cin >> n; 
+    for(int i = 0 ; i < n ; i++) {
+        cin >> a[i];
+    }
+    
+    if (n <= 1) {
+        cout << "YES";
+        return 0;
+    }
+    
+    bool isIncreasing = true;
+    bool isDecreasing = true;
+    
+    for(int i = 0 ; i < n ; i++) {
+        for(int j = i+1 ; j < n ; j++) {
+        	if(a[i]<=a[j] ) {
+        		    isIncreasing = false;
+			} else if(a[i]>=a[j])
+			{
+				    isDecreasing = false;
+			}
+    	}
+    }
+    
+    if(isIncreasing || isDecreasing ) {
+        cout << "YES" ;
+    } else {
+        cout << "NO";
+    }
+    
+}
+
 int bai7() {
 	int n , a[1000] ;
     cin >> n;
