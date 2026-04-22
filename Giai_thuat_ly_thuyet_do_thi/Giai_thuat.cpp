@@ -2,6 +2,7 @@
 #include<math.h>
 #include<String>
 #include<stack>
+#include<queue>
 #include <map>
 
 using namespace std;
@@ -19,6 +20,30 @@ int CheckPrimeNumber(int x) {
 	}
 	
 	return true;
+}
+
+int bai17() {
+	// bai tap ve stack
+	int n , k ;
+	queue<int> qu;
+	cin >> n >> k ;
+	for(int i = 0 ; i < n ; i++) {
+		int temp ; 
+		cin >> temp ;
+		qu.push(temp) ;
+	}
+	
+	for(int i = 0 ; i < k ; i++) {
+		int to = qu.front();
+		qu.push(to);
+		qu.pop();
+	}
+	
+	while(!qu.empty()) {
+		cout << qu.front() << " ";
+		qu.pop();
+	}
+
 }
 
 int bai13() {
@@ -218,5 +243,5 @@ int Bai1() {
 
 int main( )
 {
-	cout << bai13() ;
+	cout << bai17() ;
 }
