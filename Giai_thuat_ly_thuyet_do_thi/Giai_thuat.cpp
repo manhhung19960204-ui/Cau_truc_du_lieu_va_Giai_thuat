@@ -1,5 +1,8 @@
 #include<iostream>
 #include<math.h>
+#include<String>
+#include<stack>
+#include <map>
 
 using namespace std;
 
@@ -16,6 +19,21 @@ int CheckPrimeNumber(int x) {
 	}
 	
 	return true;
+}
+
+int bai13() {
+	// bai tap ve stack
+	string St;
+	cin >> St;
+	stack<char> stack;
+	for(int i = 0 ; i < St.length() ; i++) {
+		stack.push(St[i]);
+	} 
+	
+	while(!St.empty()) {
+		cout << stack.top();
+		stack.pop();
+	}
 }
 
 int bai10() {
@@ -124,10 +142,10 @@ int bai4() {
         countMap[x]++; 
     }
 
-    for (auto const& [val, count] : countMap) {
-        cout << val << " - " << count << "; ";
-    }
-
+	//for (auto const& x : countMap) {
+    //      cout << x.first << " - " << x.second << "; ";
+   // }
+	
 }
 
 int Bai3() {
@@ -200,5 +218,5 @@ int Bai1() {
 
 int main( )
 {
-	cout << bai7() ;
+	cout << bai13() ;
 }
