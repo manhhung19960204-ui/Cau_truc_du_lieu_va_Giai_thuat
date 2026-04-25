@@ -4,6 +4,8 @@
 #include<stack>
 #include<queue>
 #include <map>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -20,6 +22,60 @@ int CheckPrimeNumber(int x) {
 	}
 	
 	return true;
+}
+
+bool isPrime(int n) {
+    if (n < 2) return false;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+int bai18() {
+	int n;
+    if (!(cin >> n)) return 0; // Ð?c input n
+
+    queue<int> q;
+    vector<int> res;
+
+    // Bu?c 1: Ð?y các s? nguyên t? có 1 ch? s? vào hàng d?i
+    // Ðây là "g?c" d? xây d?ng các s? siêu nguyên t?
+    for (int i = 2; i <= 9; i++) {
+        if (isPrime(i) && i <= n) {
+            q.push(i);
+        }
+    }
+
+    // Bu?c 2: S? d?ng thu?t toán gi?ng nhu BFS d? tìm các s? ti?p theo
+    while (!q.empty()) {
+        int current = q.front();
+        q.pop();
+        
+        // Luu s? hi?n t?i vào danh sách k?t qu?
+        res.push_back(current);
+
+        // Th? thêm các ch? s? l? (1, 3, 7, 9) vào sau s? hi?n t?i
+        for (int i = 1; i <= 9; i += 2) {
+            // T?o s? m?i b?ng cách ghép thêm ch? s? i vào bên ph?i
+            // Ví d?: current = 2, i = 3 => nextNum = 2 * 10 + 3 = 23
+            long long nextNum = (long long)current * 10 + i; 
+
+            if (nextNum <= n && isPrime(nextNum)) {
+                q.push(nextNum);
+            }
+        }
+    }
+
+    // Bu?c 3: S?p x?p l?i vì queue có th? làm th? t? hoi xáo tr?n
+    sort(res.begin(), res.end());
+
+    // Bu?c 4: In k?t qu?
+    for (int i = 0; i < res.size(); i++) {
+        cout << res[i] << (i == res.size() - 1 ? "" : " ");
+    }
+
+    return 0;
 }
 
 int bai17() {
