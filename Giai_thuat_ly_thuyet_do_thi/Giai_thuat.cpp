@@ -32,6 +32,28 @@ bool isPrime(int n) {
     return true;
 }
 
+int superPrimeNumber() {
+	queue<int> q;
+    int n;
+    cin >> n ;
+    for(int i = 2 ; i < n , i< 10 ; i++) {
+        if(isPrime(i)) {
+            q.push(i);
+        }
+    }
+
+    while(!q.empty()) {
+        for(int i = 1 ; i <=9 ; i++) {
+            int k = q.front()*10+i;
+            if ( k <= n && isPrime(k)){
+                q.push(q.front()*10 + i);
+            }
+        }
+    cout << q.front() << " ";
+    q.pop();
+    }
+}
+
 int bai18() {
 	int n;
     if (!(cin >> n)) return 0; 
